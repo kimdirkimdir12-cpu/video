@@ -41,9 +41,20 @@ bot.command("admin", ctx => {
 bot.on("text", async ctx => {
   if (!ctx.message.text.includes("instagram.com")) return;
 
-  const api = `https://ddinstagram.com/api/ig?url=${encodeURIComponent(ctx.message.text)}`;
-  const res = await fetch(api);
-  const data = await res.json();
+const api = "https://snapinsta.app/api/ajaxSearch";
+
+const res = await fetch(api, {
+  method: "POST",
+  headers: { "content-type": "application/x-www-form-urlencoded" },
+  body: `q=${encodeURIComponent(ctx.message.text)}&t=media`
+});
+
+const data = await res.json();
+const link = data.data.match(/href="(https:\/\/[^"]+\.mp4)"/)?.[1];
+
+if (!link) return ctx.reply("Video topilmadi.");
+await ctx.replyWithVideo(link);
+
 
   if (!data.video) return ctx.reply("Video topilmadi.");
 
