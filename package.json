@@ -1,0 +1,8 @@
+{
+  "name": "ig-downloader-bot",
+  "type": "module",
+  "dependencies": {
+    "telegraf": "^4.15.3",
+    "node-fetch": "^3.3.2"
+  }
+}
