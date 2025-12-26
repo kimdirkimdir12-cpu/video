@@ -3,6 +3,7 @@
   "type": "module",
   "dependencies": {
     "telegraf": "^4.15.3",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "express": "^4.19.2"
   }
 }
